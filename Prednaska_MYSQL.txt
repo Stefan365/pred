@@ -1,0 +1,166 @@
+
+1. slide:
+
+- kto sme a co chceme dosiahnut.
+
+2. slide:
+
+- zobrazit si kruhom dej testovania produktu. + rozobrat si,
+ktore casti su uz automatizovane a ktore automatizovat bude treba.
+zvyraznit ciernu dieru - krok, u ktoreho je najvacsia potreba automatizacie, 
+teda vyhodnocovanie vysledkov. 
+- zobrazit stupnicu vedla seba: na jednej strane dany krok, na druhej jeho casovu narocnost.
+z toho vyplynie, ze cast vyhodnocovania nam zabera najviac energie.
+
+DAt tam vyvojovy diagram:
+
+STEPS: 
+A. prijem inputu z produkcie - 
+B. testovanie () - 
+C. vyhodnotenie testov:
+ - ukladanie vysledko
+ - odfiltrovanie znamych, neskodnych chyb - len tie, ktore sa tykaju produktu.
+ - reportovanie neznamych chyb.
+ - vytvorenie odpovede ().
+
+
+3. slide:
+
+Problem 1. ukladanie vysledkov vo vhodnej forme - vhodnej myslene potrebne informacie su lahko extrahovatelne.
+
+Problem 2. zamerat sa na to, vytvorit system transformacie komplexnej informacie (vysledky testov)
+do jednej odpovedi: 
+
+- v sucasnosti je vyhodnocovanie podmienene skusenym okom vyhodnocovatela. Ale treba to automatizovat.
+
+- uzavretý stav sa dosiahne, pokial vsetky exceptions co sa v testoch vyskytnu budeme vediet 
+roztriedit medzi zname a nezname. 
+Potom sa praca automatizera zuzi na skumanie a reportovanie neznamych.
+
+Potrebne zmeny pre dosiahnutie plnej automatizacie:
+- informacie vysledku musia byt ukladane v strojovo dostuplnej forme. 
+- znalosti o znamych chybach sa musia ukladat tiez v strojovo dostupnej forme 
+
+
+4. slide:
+
+Navrh riesenia: 
+
+- MySQL DB. - splna tieto poziadavky.
+data su strukturovane, dobre prehladne aj hladiska strojoveho vyhladavania, aj z hladiska ludskeho.
+
+PROBLEMS:
+- there are some problems with identyfying of large texts (exception stack trace) it takes too long time.
+thats why we need to 
+
+- koncepcia separovanych databaz pre rozne produkty. 
+
+
+- nie uplne deterministicky: "ElasticSearch"
+
+
+5. slide:
+
+DB model:
+
+ukazat tam tu schemu.
++ ju opisat.
+
+
+
+
+6. slide:
+
+ukazat na obr. ako cely proces bude fungovat.
+- vstup: API xml zo zbehnuteho jenkins-jobu,
+- posledny krok - zapis do Polarionu.
+- + zapis do DB.
+- z XML API vyextrahuje vsetky potrebne informacie (adresa + exception) 
+
+
+6.1. sposoby: 
+- za chodu - jenkins post build krok.
+- mimo chodu - pocas  
+
+
+6.2. slide:
+ukladanie znalosti do DB. - manualne.
+this has to be done manually,
+this is slowly process.
+ 
+6.3. slide:
+pomoci dotazu zistit vsetky skutocne problematicke testy daneho runu. 
+
+
+
+7. slide:
+- problem identifikacie error_stack_trace:
+- deterministicky: Leveshtein method: very time consuming.
+- solution: Elastic search.
+
+- mnogo userov at the same time: separate databases for each component 
+(switchyard, camel), separate databases.
+
+
+
+
+9. To be done, moznosti:
+- vyhodnocovanie i chyby na serveri - parsovanie server logu.
+- stabilizacia testsuity: spustanie testov s maximalnou vypovednou hodnotou. 
+- struktura: na 1 OS + jdk pustat vsetko, 
+- na inych len to, co pada (pada s najcastejsou frekvenciou).
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+pomocou ktoreho 
+
+- toto je nasa cierna diera.
+- 
+
+
+
+- v akej podobe by teda mali byt informacie - resulty danych testov?
+
+- 
+
+
+- 
+
+
+
+
+- analyza krokov, ktore k tomuto stavu povedu. - toto bude zobrazene do kruu
+
+- 
+
+
+
+//this is temporary solution: 
+see: https://docs.google.com/spreadsheets/d/12OFeAgnWAYPybxc45BkCL2qX8-ZsKmwFBd9wq1oeiJQ/edit#gid=569603151 
+sheets: 6.2_eap, 6.2_karaf, 6.3_eap, 6.3_karaf 
+
+
